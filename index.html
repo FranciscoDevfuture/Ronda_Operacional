@@ -2,9 +2,8 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Ronda Operacional</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg: #f4f1eb;
@@ -28,8 +27,6 @@
   --shadow: 0 2px 8px rgba(0,0,0,0.08);
   --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
   --radius: 10px;
-  --sans: 'Barlow', sans-serif;
-  --cond: 'Barlow Condensed', sans-serif;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
@@ -37,12 +34,11 @@
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: var(--sans);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   min-height: 100vh;
-  padding-bottom: 90px;
+  padding-bottom: 100px;
 }
 
-/* ── HEADER ── */
 .header {
   background: var(--accent);
   color: #fff;
@@ -58,554 +54,253 @@ body {
 }
 .header-brand { display: flex; align-items: center; gap: 10px; }
 .header-icon { font-size: 24px; line-height: 1; }
-.header-title { font-family: var(--cond); font-size: 20px; font-weight: 800; letter-spacing: 0.5px; line-height: 1; }
-.header-sub { font-size: 11px; opacity: 0.65; margin-top: 2px; font-weight: 400; }
+.header-title { font-size: 18px; font-weight: 800; letter-spacing: 0.3px; line-height: 1; }
+.header-sub { font-size: 11px; opacity: 0.65; margin-top: 3px; }
 .header-date {
-  font-family: var(--cond);
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 12px; font-weight: 600;
   background: rgba(255,255,255,0.15);
-  padding: 5px 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  white-space: nowrap;
+  padding: 6px 10px; border-radius: 6px;
+  cursor: pointer; white-space: nowrap;
   border: 1px solid rgba(255,255,255,0.2);
-  display: flex;
-  align-items: center;
-  gap: 5px;
+  display: flex; align-items: center; gap: 5px;
+  flex-shrink: 0;
 }
 
-/* ── PROGRESS ── */
-.progress-wrap {
-  background: var(--accent);
-  padding: 0 18px 14px;
-}
+.progress-wrap { background: var(--accent); padding: 0 18px 14px; }
 .progress-info {
-  display: flex;
-  justify-content: space-between;
-  font-size: 11px;
-  color: rgba(255,255,255,0.7);
-  margin-bottom: 6px;
-  font-family: var(--cond);
-  font-weight: 600;
-  letter-spacing: 0.3px;
+  display: flex; justify-content: space-between;
+  font-size: 11px; color: rgba(255,255,255,0.7);
+  margin-bottom: 6px; font-weight: 600; letter-spacing: 0.3px;
 }
-.progress-track {
-  height: 5px;
-  background: rgba(255,255,255,0.2);
-  border-radius: 99px;
-  overflow: hidden;
-}
-.progress-fill {
-  height: 100%;
-  background: #5dde7a;
-  border-radius: 99px;
-  transition: width 0.3s ease;
-  width: 0%;
-}
+.progress-track { height: 5px; background: rgba(255,255,255,0.2); border-radius: 99px; overflow: hidden; }
+.progress-fill { height: 100%; background: #5dde7a; border-radius: 99px; transition: width 0.3s ease; width: 0%; }
 
-/* ── STATS BAR ── */
 .stats-bar {
-  display: flex;
-  gap: 0;
-  background: var(--surface);
+  display: flex; background: var(--surface);
   border-bottom: 1px solid var(--border);
-  overflow-x: auto;
-  scrollbar-width: none;
+  overflow-x: auto; scrollbar-width: none;
 }
 .stats-bar::-webkit-scrollbar { display: none; }
 .stat-pill {
-  flex: 1;
-  min-width: 70px;
-  padding: 9px 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-right: 1px solid var(--border);
-  gap: 2px;
+  flex: 1; min-width: 70px; padding: 9px 8px;
+  display: flex; flex-direction: column; align-items: center;
+  border-right: 1px solid var(--border); gap: 2px;
 }
 .stat-pill:last-child { border-right: none; }
-.stat-num {
-  font-family: var(--cond);
-  font-size: 22px;
-  font-weight: 800;
-  line-height: 1;
-}
+.stat-num { font-size: 22px; font-weight: 800; line-height: 1; }
 .stat-num.s-ok { color: var(--ok); }
 .stat-num.s-warn { color: var(--warn); }
 .stat-num.s-issue { color: var(--issue); }
 .stat-num.s-total { color: var(--accent); }
 .stat-label { font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); }
 
-/* ── SECTION GROUP ── */
 .main { max-width: 700px; margin: 0 auto; padding: 14px 12px; display: flex; flex-direction: column; gap: 10px; }
 
 .group-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  overflow: hidden;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden;
 }
-
 .group-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 14px;
-  cursor: pointer;
-  user-select: none;
-  background: var(--surface2);
-  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 14px; cursor: pointer; user-select: none;
+  background: var(--surface2); border-bottom: 1px solid var(--border);
 }
 .group-header:active { background: #eeebe3; }
-.group-name {
-  flex: 1;
-  font-family: var(--cond);
-  font-size: 15px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--accent);
-}
-.group-counter {
-  font-family: var(--cond);
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--muted);
-  background: var(--tag-bg);
-  padding: 2px 8px;
-  border-radius: 99px;
-}
+.group-name { flex: 1; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); }
+.group-counter { font-size: 12px; font-weight: 700; color: var(--muted); background: var(--tag-bg); padding: 2px 8px; border-radius: 99px; }
 .group-chevron { color: var(--muted); font-size: 12px; transition: transform 0.2s; }
 .group-card.collapsed .group-chevron { transform: rotate(-90deg); }
 .group-card.collapsed .group-body { display: none; }
 
-/* ── ITEM ROW ── */
-.item-row {
-  display: flex;
-  align-items: stretch;
-  border-bottom: 1px solid var(--border);
-  min-height: 52px;
-}
+.item-row { display: flex; align-items: stretch; border-bottom: 1px solid var(--border); min-height: 54px; }
 .item-row:last-child { border-bottom: none; }
-
-.item-status-bar {
-  width: 4px;
-  flex-shrink: 0;
-  background: var(--border);
-  transition: background 0.15s;
-}
+.item-status-bar { width: 4px; flex-shrink: 0; background: var(--border); transition: background 0.15s; }
 .item-row.s-ok .item-status-bar { background: var(--ok); }
 .item-row.s-warn .item-status-bar { background: var(--warn); }
 .item-row.s-issue .item-status-bar { background: var(--issue); }
-
-.item-main {
-  flex: 1;
-  padding: 10px 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  min-width: 0;
-}
-.item-name {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text);
-  line-height: 1.3;
-}
-.item-obs {
-  font-size: 12px;
-  color: var(--muted);
-  font-style: italic;
-  line-height: 1.4;
-  word-break: break-word;
-}
+.item-main { flex: 1; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; min-width: 0; cursor: pointer; }
+.item-name { font-size: 14px; font-weight: 600; color: var(--text); line-height: 1.3; }
+.item-obs { font-size: 12px; color: var(--muted); font-style: italic; line-height: 1.4; word-break: break-word; }
 .item-tag {
-  display: inline-flex;
-  align-items: center;
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 2px 6px;
-  border-radius: 4px;
-  margin-top: 2px;
-  width: fit-content;
+  display: inline-flex; align-items: center;
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+  padding: 2px 6px; border-radius: 4px; margin-top: 2px; width: fit-content;
 }
 .tag-ok { background: var(--ok-bg); color: var(--ok); border: 1px solid var(--ok-border); }
 .tag-warn { background: var(--warn-bg); color: var(--warn); border: 1px solid var(--warn-border); }
 .tag-issue { background: var(--issue-bg); color: var(--issue); border: 1px solid var(--issue-border); }
 
 .item-actions {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 6px 8px;
-  gap: 4px;
-  border-left: 1px solid var(--border);
-  flex-shrink: 0;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 6px 8px; gap: 4px; border-left: 1px solid var(--border); flex-shrink: 0;
 }
 .act-btn {
-  width: 32px; height: 32px;
-  border-radius: 7px;
+  width: 34px; height: 34px; border-radius: 7px;
   display: flex; align-items: center; justify-content: center;
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
-  transition: all 0.12s;
-  background: var(--tag-bg);
+  font-size: 17px; cursor: pointer; border: 2px solid transparent;
+  transition: all 0.12s; background: var(--tag-bg); font-weight: 700;
 }
-.act-btn:active { transform: scale(0.9); }
-.act-btn.active-ok { background: var(--ok-bg); }
-.act-btn.active-warn { background: var(--warn-bg); }
-.act-btn.active-issue { background: var(--issue-bg); }
-.act-btn.del { font-size: 13px; color: var(--muted); }
+.act-btn:active { transform: scale(0.88); }
+.act-btn.active-ok { background: var(--ok-bg); border-color: var(--ok); }
+.act-btn.active-warn { background: var(--warn-bg); border-color: var(--warn); }
+.act-btn.active-issue { background: var(--issue-bg); border-color: var(--issue); }
+.act-btn.del { font-size: 15px; color: var(--muted); }
 .act-btn.del:active { background: var(--issue-bg); color: var(--issue); }
 
-/* ── ADD ITEM AREA ── */
-.add-item-area {
-  padding: 10px 12px;
-  border-top: 1px solid var(--border);
-  background: var(--surface2);
-}
-
-.add-item-row {
-  display: flex;
-  gap: 6px;
-  align-items: stretch;
-}
-
+.add-item-area { padding: 10px 12px; border-top: 1px solid var(--border); background: var(--surface2); }
+.add-item-row { display: flex; gap: 6px; align-items: stretch; }
 .add-item-input {
-  flex: 1;
-  background: var(--surface);
-  border: 1.5px solid var(--border);
-  border-radius: 8px;
-  padding: 8px 12px;
-  font-family: var(--sans);
-  font-size: 13px;
-  color: var(--text);
-  outline: none;
-  transition: border-color 0.15s;
+  flex: 1; background: var(--surface); border: 1.5px solid var(--border);
+  border-radius: 8px; padding: 9px 12px;
+  font-family: inherit; font-size: 14px; color: var(--text); outline: none;
 }
 .add-item-input:focus { border-color: var(--accent2); }
 .add-item-input::placeholder { color: var(--muted); }
-
 .add-item-btn {
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 8px 14px;
-  font-family: var(--cond);
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background 0.12s;
-  white-space: nowrap;
+  background: var(--accent); color: #fff; border: none; border-radius: 8px;
+  padding: 9px 14px; font-family: inherit; font-size: 14px; font-weight: 700;
+  cursor: pointer; white-space: nowrap;
 }
 .add-item-btn:active { background: var(--accent2); }
 
-.quick-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 8px;
-}
+.quick-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
 .qtag {
-  font-size: 11px;
-  padding: 4px 10px;
-  border-radius: 99px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  cursor: pointer;
-  color: var(--text);
-  font-weight: 500;
-  transition: all 0.12s;
-  user-select: none;
+  font-size: 11px; padding: 4px 10px; border-radius: 99px;
+  border: 1px solid var(--border); background: var(--surface);
+  cursor: pointer; color: var(--text); font-weight: 500;
 }
 .qtag:active { background: var(--tag-bg); border-color: var(--accent2); color: var(--accent2); }
 
-/* ── ADD GROUP ── */
-.add-group-wrap {
-  display: flex;
-  gap: 8px;
-  align-items: stretch;
-}
+.add-group-wrap { display: flex; gap: 8px; align-items: stretch; }
 .add-group-input {
-  flex: 1;
-  background: var(--surface);
-  border: 1.5px dashed var(--border);
-  border-radius: 8px;
-  padding: 12px 14px;
-  font-family: var(--cond);
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--text);
-  outline: none;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  transition: border-color 0.15s;
+  flex: 1; background: var(--surface); border: 1.5px dashed var(--border);
+  border-radius: 8px; padding: 12px 14px; font-family: inherit;
+  font-size: 14px; font-weight: 600; color: var(--text); outline: none;
 }
 .add-group-input:focus { border-color: var(--accent2); border-style: solid; }
-.add-group-input::placeholder { text-transform: none; font-weight: 400; color: var(--muted); letter-spacing: 0; }
+.add-group-input::placeholder { font-weight: 400; color: var(--muted); }
 .add-group-btn {
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 12px 16px;
-  font-family: var(--cond);
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background 0.12s;
+  background: var(--accent); color: #fff; border: none; border-radius: 8px;
+  padding: 12px 16px; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer;
 }
 .add-group-btn:active { background: var(--accent2); }
 
-.group-quick-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 10px;
-}
+.group-quick-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
 
-/* ── EMPTY STATE ── */
-.empty-state {
-  text-align: center;
-  padding: 40px 24px;
-  color: var(--muted);
-}
+.empty-state { text-align: center; padding: 40px 24px; color: var(--muted); }
 .empty-icon { font-size: 48px; margin-bottom: 12px; }
-.empty-title { font-family: var(--cond); font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+.empty-title { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
 .empty-sub { font-size: 13px; line-height: 1.5; }
 
-/* ── OBS MODAL ── */
-.obs-overlay {
-  display: none;
-  position: fixed; inset: 0;
-  background: rgba(0,0,0,0.5);
-  z-index: 200;
-  align-items: flex-end;
-  justify-content: center;
+/* OBS SHEET */
+.overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.5); z-index: 200;
+  align-items: flex-end; justify-content: center;
 }
-.obs-overlay.open { display: flex; }
-.obs-sheet {
-  background: var(--surface);
-  border-radius: 16px 16px 0 0;
-  padding: 20px 18px 32px;
-  width: 100%;
-  max-width: 600px;
+.overlay.open { display: flex; }
+.sheet {
+  background: var(--surface); border-radius: 16px 16px 0 0;
+  padding: 20px 18px 40px; width: 100%; max-width: 600px;
   box-shadow: var(--shadow-lg);
 }
-.obs-handle { width: 40px; height: 4px; background: var(--border); border-radius: 99px; margin: 0 auto 16px; }
-.obs-title { font-family: var(--cond); font-size: 16px; font-weight: 700; margin-bottom: 12px; color: var(--accent); }
-.obs-textarea {
-  width: 100%;
-  background: var(--surface2);
-  border: 1.5px solid var(--border);
-  border-radius: 8px;
-  padding: 10px 12px;
-  font-family: var(--sans);
-  font-size: 14px;
-  color: var(--text);
-  outline: none;
-  resize: none;
-  height: 100px;
-  transition: border-color 0.15s;
+.sheet-handle { width: 40px; height: 4px; background: var(--border); border-radius: 99px; margin: 0 auto 16px; }
+.sheet-title { font-size: 16px; font-weight: 700; margin-bottom: 12px; color: var(--accent); }
+.sheet-textarea {
+  width: 100%; background: var(--surface2); border: 1.5px solid var(--border);
+  border-radius: 8px; padding: 10px 12px; font-family: inherit; font-size: 14px;
+  color: var(--text); outline: none; resize: none; height: 100px;
 }
-.obs-textarea:focus { border-color: var(--accent2); }
-.obs-actions { display: flex; gap: 8px; margin-top: 12px; }
-.obs-save {
-  flex: 1;
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 12px;
-  font-family: var(--cond);
-  font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
+.sheet-textarea:focus { border-color: var(--accent2); }
+.sheet-actions { display: flex; gap: 8px; margin-top: 12px; }
+.btn-primary {
+  flex: 1; background: var(--accent); color: #fff; border: none;
+  border-radius: 8px; padding: 13px; font-family: inherit; font-size: 15px; font-weight: 700; cursor: pointer;
 }
-.obs-cancel {
-  background: var(--tag-bg);
-  color: var(--text);
-  border: none;
-  border-radius: 8px;
-  padding: 12px 16px;
-  font-family: var(--cond);
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
+.btn-secondary {
+  background: var(--tag-bg); color: var(--text); border: none;
+  border-radius: 8px; padding: 13px 16px; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer;
 }
 
-/* ── REPORT MODAL ── */
+/* REPORT OVERLAY */
 .report-overlay {
-  display: none;
-  position: fixed; inset: 0;
-  background: rgba(0,0,0,0.6);
-  z-index: 200;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.6); z-index: 200;
+  align-items: center; justify-content: center; padding: 16px;
 }
 .report-overlay.open { display: flex; }
 .report-modal {
-  background: var(--surface);
-  border-radius: 12px;
-  width: 100%;
-  max-width: 560px;
-  max-height: 85vh;
-  display: flex;
-  flex-direction: column;
-  box-shadow: var(--shadow-lg);
+  background: var(--surface); border-radius: 12px;
+  width: 100%; max-width: 560px; max-height: 85vh;
+  display: flex; flex-direction: column; box-shadow: var(--shadow-lg);
 }
 .report-header {
-  padding: 16px 18px;
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  padding: 16px 18px; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
 }
-.report-title { font-family: var(--cond); font-size: 18px; font-weight: 800; color: var(--accent); }
+.report-title { font-size: 18px; font-weight: 800; color: var(--accent); }
 .report-close { background: none; border: none; font-size: 20px; cursor: pointer; color: var(--muted); }
 .report-body { flex: 1; overflow-y: auto; padding: 16px 18px; }
 .report-text {
-  font-family: 'Courier New', monospace;
-  font-size: 11px;
-  white-space: pre-wrap;
-  line-height: 1.7;
-  color: var(--text);
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 14px;
+  font-family: 'Courier New', monospace; font-size: 11px;
+  white-space: pre-wrap; line-height: 1.7; color: var(--text);
+  background: var(--surface2); border: 1px solid var(--border);
+  border-radius: 8px; padding: 14px;
 }
-.report-footer {
-  padding: 12px 18px;
-  border-top: 1px solid var(--border);
-  display: flex;
-  gap: 8px;
-}
-.btn-primary {
-  flex: 1;
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 12px;
-  font-family: var(--cond);
-  font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
-}
-.btn-secondary {
-  background: var(--tag-bg);
-  color: var(--text);
-  border: none;
-  border-radius: 8px;
-  padding: 12px 16px;
-  font-family: var(--cond);
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-}
+.report-footer { padding: 12px 18px; border-top: 1px solid var(--border); display: flex; gap: 8px; }
 
-/* ── DATE MODAL ── */
+/* DATE MODAL */
 .date-overlay {
-  display: none;
-  position: fixed; inset: 0;
-  background: rgba(0,0,0,0.5);
-  z-index: 300;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.5); z-index: 300;
+  align-items: center; justify-content: center; padding: 24px;
 }
 .date-overlay.open { display: flex; }
 .date-modal {
-  background: var(--surface);
-  border-radius: 12px;
-  padding: 24px;
-  width: 100%;
-  max-width: 320px;
-  box-shadow: var(--shadow-lg);
+  background: var(--surface); border-radius: 12px;
+  padding: 24px; width: 100%; max-width: 320px; box-shadow: var(--shadow-lg);
 }
-.date-title { font-family: var(--cond); font-size: 18px; font-weight: 800; margin-bottom: 14px; color: var(--accent); }
+.date-title { font-size: 18px; font-weight: 800; margin-bottom: 14px; color: var(--accent); }
 .date-fields { display: flex; flex-direction: column; gap: 10px; }
 .date-field label { font-size: 12px; font-weight: 600; text-transform: uppercase; color: var(--muted); letter-spacing: 0.5px; display: block; margin-bottom: 4px; }
 .date-field input, .date-field select {
-  width: 100%;
-  background: var(--surface2);
-  border: 1.5px solid var(--border);
-  border-radius: 8px;
-  padding: 10px 12px;
-  font-family: var(--sans);
-  font-size: 14px;
-  color: var(--text);
-  outline: none;
+  width: 100%; background: var(--surface2); border: 1.5px solid var(--border);
+  border-radius: 8px; padding: 10px 12px; font-family: inherit; font-size: 14px; color: var(--text); outline: none;
 }
 .date-field input:focus, .date-field select:focus { border-color: var(--accent2); }
 .date-actions { display: flex; gap: 8px; margin-top: 16px; }
 
-/* ── FAB ── */
 .fab-wrap {
-  position: fixed;
-  bottom: 16px;
-  right: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  align-items: flex-end;
-  z-index: 100;
+  position: fixed; bottom: 16px; right: 16px;
+  display: flex; flex-direction: column; gap: 8px; align-items: flex-end; z-index: 100;
 }
 .fab {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  border-radius: 99px;
-  padding: 12px 18px;
-  font-family: var(--cond);
-  font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: var(--shadow-lg);
-  transition: background 0.15s, transform 0.1s;
-  letter-spacing: 0.5px;
+  display: flex; align-items: center; gap: 8px;
+  color: #fff; border: none; border-radius: 99px;
+  padding: 13px 20px; font-family: inherit; font-size: 15px; font-weight: 700;
+  cursor: pointer; box-shadow: var(--shadow-lg); letter-spacing: 0.3px;
+  background: #2d7a3a;
 }
-.fab:active { transform: scale(0.96); background: var(--accent2); }
-.fab.fab-report { background: #2d7a3a; }
-.fab.fab-report:active { background: #1f5929; }
+.fab:active { transform: scale(0.96); opacity: 0.9; }
 
-/* ── CLEAR BTN ── */
 .danger-zone { padding: 16px 12px 4px; max-width: 700px; margin: 0 auto; }
 .clear-btn {
-  width: 100%;
-  background: none;
-  border: 1.5px dashed var(--border);
-  border-radius: 8px;
-  padding: 10px;
-  font-family: var(--sans);
-  font-size: 12px;
-  color: var(--muted);
-  cursor: pointer;
-  transition: all 0.15s;
+  width: 100%; background: none; border: 1.5px dashed var(--border);
+  border-radius: 8px; padding: 10px; font-family: inherit;
+  font-size: 12px; color: var(--muted); cursor: pointer;
 }
-.clear-btn:hover { border-color: var(--issue); color: var(--issue); }
+.clear-btn:active { border-color: var(--issue); color: var(--issue); }
 
-/* ── RESPONSIVE ── */
-@media (max-width: 480px) {
-  .header-title { font-size: 17px; }
-  .item-name { font-size: 13px; }
+.del-group-btn {
+  background: none; border: none; color: var(--muted);
+  font-size: 18px; cursor: pointer; padding: 2px 6px; line-height: 1;
+  flex-shrink: 0;
 }
+.del-group-btn:active { color: var(--issue); }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <div class="header">
   <div class="header-brand">
     <div class="header-icon">🚌</div>
@@ -617,7 +312,6 @@ body {
   <div class="header-date" onclick="openDateModal()">📅 <span id="headerDate">–</span></div>
 </div>
 
-<!-- PROGRESS -->
 <div class="progress-wrap">
   <div class="progress-info">
     <span id="progLabel">0 itens adicionados</span>
@@ -626,43 +320,27 @@ body {
   <div class="progress-track"><div class="progress-fill" id="progFill"></div></div>
 </div>
 
-<!-- STATS -->
 <div class="stats-bar">
-  <div class="stat-pill">
-    <div class="stat-num s-total" id="statTotal">0</div>
-    <div class="stat-label">Total</div>
-  </div>
-  <div class="stat-pill">
-    <div class="stat-num s-ok" id="statOk">0</div>
-    <div class="stat-label">✓ OK</div>
-  </div>
-  <div class="stat-pill">
-    <div class="stat-num s-warn" id="statWarn">0</div>
-    <div class="stat-label">⚡ Atenção</div>
-  </div>
-  <div class="stat-pill">
-    <div class="stat-num s-issue" id="statIssue">0</div>
-    <div class="stat-label">✗ Problema</div>
-  </div>
+  <div class="stat-pill"><div class="stat-num s-total" id="statTotal">0</div><div class="stat-label">Total</div></div>
+  <div class="stat-pill"><div class="stat-num s-ok" id="statOk">0</div><div class="stat-label">✓ OK</div></div>
+  <div class="stat-pill"><div class="stat-num s-warn" id="statWarn">0</div><div class="stat-label">⚡ Atenção</div></div>
+  <div class="stat-pill"><div class="stat-num s-issue" id="statIssue">0</div><div class="stat-label">✗ Problema</div></div>
 </div>
 
-<!-- MAIN -->
 <div class="main" id="main">
-  <!-- grupos renderizados aqui -->
   <div id="emptyState" class="group-card" style="background:var(--surface);border:1.5px dashed var(--border);box-shadow:none;">
     <div class="empty-state">
       <div class="empty-icon">📋</div>
       <div class="empty-title">Nenhuma seção ainda</div>
-      <div class="empty-sub">Adicione uma seção abaixo para começar a ronda — ex: "Plataforma 01/02", "Hidrantes", "Banheiros"</div>
+      <div class="empty-sub">Adicione uma seção abaixo para começar a ronda<br>ex: "Plataforma 01/02", "Hidrantes", "Extintores"</div>
     </div>
   </div>
 
-  <!-- ADD GROUP -->
-  <div class="group-card" style="background:var(--surface2);box-shadow:none;">
+  <div class="group-card" data-add="1" style="background:var(--surface2);box-shadow:none;">
     <div style="padding:14px;">
-      <div style="font-family:var(--cond);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:10px;">+ Nova Seção</div>
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:10px;">+ Nova Seção</div>
       <div class="add-group-wrap">
-        <input class="add-group-input" id="groupInput" placeholder="Ex: Plataforma 01/02, Hidrantes, Extintores..." 
+        <input class="add-group-input" id="groupInput" placeholder="Ex: Plataforma 01/02, Hidrantes, PMD 07..."
           onkeydown="if(event.key==='Enter') addGroup()">
         <button class="add-group-btn" onclick="addGroup()">Adicionar</button>
       </div>
@@ -677,6 +355,7 @@ body {
         <span class="qtag" onclick="quickGroup('Bloco Administrativo')">📁 Bloco Administrativo</span>
         <span class="qtag" onclick="quickGroup('Mezanino')">🪜 Mezanino</span>
         <span class="qtag" onclick="quickGroup('Túnel')">🌀 Túnel</span>
+        <span class="qtag" onclick="quickGroup('PMDs')">📍 PMDs</span>
       </div>
     </div>
   </div>
@@ -686,20 +365,19 @@ body {
   <button class="clear-btn" onclick="clearAll()">🗑 Limpar tudo e iniciar nova ronda</button>
 </div>
 
-<!-- FABs -->
 <div class="fab-wrap">
-  <button class="fab fab-report" onclick="openReport()">📋 Gerar Relatório</button>
+  <button class="fab" onclick="openReport()">📲 Relatório / WhatsApp</button>
 </div>
 
 <!-- OBS SHEET -->
-<div class="obs-overlay" id="obsOverlay">
-  <div class="obs-sheet">
-    <div class="obs-handle"></div>
-    <div class="obs-title" id="obsTitle">Observação</div>
-    <textarea class="obs-textarea" id="obsTextarea" placeholder="Descreva o problema ou observação..."></textarea>
-    <div class="obs-actions">
-      <button class="obs-cancel" onclick="closeObs()">Cancelar</button>
-      <button class="obs-save" onclick="saveObs()">Salvar</button>
+<div class="overlay" id="obsOverlay">
+  <div class="sheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-title" id="obsTitle">Observação</div>
+    <textarea class="sheet-textarea" id="obsTextarea" placeholder="Descreva o problema ou observação..."></textarea>
+    <div class="sheet-actions">
+      <button class="btn-secondary" onclick="closeObs()">Cancelar</button>
+      <button class="btn-primary" onclick="saveObs()">Salvar</button>
     </div>
   </div>
 </div>
@@ -757,141 +435,120 @@ body {
 </div>
 
 <script>
-// ── STATE ───────────────────────────────────────────
-let groups = []; // [{id, name, items:[{id,name,status,obs}]}]
-let meta = { terminal:'', date:'', resp:'', turno:'' };
-let obsTarget = null; // {gId, iId}
+var groups = [];
+var meta = { terminal:'', date:'', resp:'', turno:'' };
+var obsTarget = null;
 
-const STORAGE_KEY = 'ronda_v2_groups';
-const META_KEY    = 'ronda_v2_meta';
+var STORAGE_KEY = 'ronda_v3_groups';
+var META_KEY    = 'ronda_v3_meta';
 
-// ── INIT ────────────────────────────────────────────
+var QUICK_ITEMS = {
+  plataforma: ['WC Masculino','WC Feminino','WC PCD','WC Familiar','Bebedouro','Caixa Eletrônico 24h','Display Álcool em Gel','Lixeiras'],
+  banheiro:   ['WC Masculino','WC Feminino','WC PCD','WC Familiar'],
+  extintor:   ['Verificar carga','Lacre íntegro','Sinalização presente','Acesso desobstruído'],
+  hidrante:   ['Mangueira presente','Esguicho presente','Martelinho presente','Alarme antifurto','Caixa íntegra'],
+  geral:      ['Limpeza','Iluminação','Sinalização','Acesso','Equipamentos'],
+  pmd:        ['Identificação visível','Estrutura íntegra','Limpeza','Acessibilidade']
+};
+
 function init() {
-  const sg = localStorage.getItem(STORAGE_KEY);
-  const sm = localStorage.getItem(META_KEY);
-  if (sg) try { groups = JSON.parse(sg); } catch(e){}
-  if (sm) try { meta   = JSON.parse(sm); } catch(e){}
-
-  // set today if no date
-  if (!meta.date) {
-    const t = new Date();
-    meta.date = t.toISOString().split('T')[0];
-  }
-
+  try { var sg = localStorage.getItem(STORAGE_KEY); if (sg) groups = JSON.parse(sg); } catch(e){}
+  try { var sm = localStorage.getItem(META_KEY);    if (sm) meta   = JSON.parse(sm);  } catch(e){}
+  if (!meta.date) meta.date = new Date().toISOString().split('T')[0];
   render();
   updateHeader();
 }
 
 function save() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(groups));
-  localStorage.setItem(META_KEY, JSON.stringify(meta));
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(groups));
+    localStorage.setItem(META_KEY, JSON.stringify(meta));
+  } catch(e){}
 }
 
-// ── HEADER ──────────────────────────────────────────
 function updateHeader() {
-  const d = meta.date ? formatDate(meta.date) : '–';
-  document.getElementById('headerDate').textContent = d;
-  const sub = [meta.terminal, meta.turno, meta.resp].filter(Boolean).join(' · ');
+  document.getElementById('headerDate').textContent = meta.date ? formatDate(meta.date) : '–';
+  var sub = [meta.terminal, meta.turno, meta.resp].filter(Boolean).join(' · ');
   document.getElementById('headerSub').textContent = sub || 'Terminal de Ônibus';
 }
 
 function formatDate(iso) {
   if (!iso) return '–';
-  const [y,m,d] = iso.split('-');
-  return `${d}/${m}/${y}`;
+  var p = iso.split('-');
+  return p[2]+'/'+p[1]+'/'+p[0];
 }
 
-// ── IDS ─────────────────────────────────────────────
-function uid() { return '_' + Math.random().toString(36).slice(2,9); }
+function uid() { return '_'+Math.random().toString(36).slice(2,9); }
 
-// ── GROUPS ──────────────────────────────────────────
 function addGroup(name) {
-  const inp = document.getElementById('groupInput');
-  const n = (name || inp.value).trim();
+  var inp = document.getElementById('groupInput');
+  var n = (name || inp.value).trim();
   if (!n) { inp.focus(); return; }
   groups.push({ id: uid(), name: n, items: [] });
-  inp.value = '';
+  if (!name) inp.value = '';
   save(); render();
-  // scroll to new group
-  setTimeout(() => {
-    const cards = document.querySelectorAll('.group-card:not([data-add])');
-    const last = cards[cards.length - 1];
-    if (last) last.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, 100);
+  setTimeout(function() {
+    var cards = document.querySelectorAll('.group-card:not([data-add])');
+    if (cards.length) cards[cards.length-1].scrollIntoView({ behavior:'smooth', block:'start' });
+  }, 120);
 }
 
 function quickGroup(name) { addGroup(name); }
 
 function deleteGroup(gId) {
   if (!confirm('Remover esta seção e todos os itens?')) return;
-  groups = groups.filter(g => g.id !== gId);
+  groups = groups.filter(function(g){ return g.id !== gId; });
   save(); render();
 }
 
-function toggleGroup(gId) {
-  const card = document.getElementById('gc_' + gId);
-  if (card) card.classList.toggle('collapsed');
-}
-
-// ── ITEMS ────────────────────────────────────────────
 function addItem(gId) {
-  const inp = document.getElementById('ii_' + gId);
-  const n = inp.value.trim();
+  var inp = document.getElementById('ii_'+gId);
+  var n = inp.value.trim();
   if (!n) { inp.focus(); return; }
-  const g = groups.find(g => g.id === gId);
+  var g = groups.find(function(g){ return g.id===gId; });
   if (!g) return;
-  g.items.push({ id: uid(), name: n, status: null, obs: '' });
+  g.items.push({ id:uid(), name:n, status:null, obs:'' });
   inp.value = '';
-  save(); renderGroup(gId);
-  updateStats();
+  save(); renderGroup(gId); updateStats();
 }
 
 function quickItem(gId, name) {
-  const g = groups.find(g => g.id === gId);
+  var g = groups.find(function(g){ return g.id===gId; });
   if (!g) return;
-  g.items.push({ id: uid(), name, status: null, obs: '' });
-  save(); renderGroup(gId);
-  updateStats();
+  g.items.push({ id:uid(), name:name, status:null, obs:'' });
+  save(); renderGroup(gId); updateStats();
 }
 
 function deleteItem(gId, iId) {
-  const g = groups.find(g => g.id === gId);
+  var g = groups.find(function(g){ return g.id===gId; });
   if (!g) return;
-  g.items = g.items.filter(i => i.id !== iId);
-  save(); renderGroup(gId);
-  updateStats();
+  g.items = g.items.filter(function(i){ return i.id!==iId; });
+  save(); renderGroup(gId); updateStats();
 }
 
 function setStatus(gId, iId, status) {
-  const g = groups.find(g => g.id === gId);
+  var g = groups.find(function(g){ return g.id===gId; });
   if (!g) return;
-  const item = g.items.find(i => i.id === iId);
+  var item = g.items.find(function(i){ return i.id===iId; });
   if (!item) return;
-  // toggle: click same = clear
   if (item.status === status) {
-    item.status = null;
-    item.obs = '';
+    item.status = null; item.obs = '';
   } else {
     item.status = status;
-    // open obs if not OK
-    if (status !== 'ok') {
-      openObs(gId, iId);
-    }
+    if (status !== 'ok') openObs(gId, iId);
   }
-  save(); renderGroup(gId);
-  updateStats();
+  save(); renderGroup(gId); updateStats();
 }
 
-// ── OBS ─────────────────────────────────────────────
 function openObs(gId, iId) {
-  const g = groups.find(g => g.id === gId);
-  const item = g && g.items.find(i => i.id === iId);
+  var g = groups.find(function(g){ return g.id===gId; });
+  var item = g && g.items.find(function(i){ return i.id===iId; });
   if (!item) return;
-  obsTarget = { gId, iId };
+  obsTarget = { gId:gId, iId:iId };
   document.getElementById('obsTitle').textContent = item.name;
   document.getElementById('obsTextarea').value = item.obs || '';
   document.getElementById('obsOverlay').classList.add('open');
-  setTimeout(() => document.getElementById('obsTextarea').focus(), 100);
+  setTimeout(function(){ document.getElementById('obsTextarea').focus(); }, 150);
 }
 
 function closeObs() {
@@ -901,25 +558,19 @@ function closeObs() {
 
 function saveObs() {
   if (!obsTarget) return;
-  const g = groups.find(g => g.id === obsTarget.gId);
-  const item = g && g.items.find(i => i.id === obsTarget.iId);
-  if (item) {
-    item.obs = document.getElementById('obsTextarea').value.trim();
-    save(); renderGroup(obsTarget.gId);
-  }
+  var g = groups.find(function(g){ return g.id===obsTarget.gId; });
+  var item = g && g.items.find(function(i){ return i.id===obsTarget.iId; });
+  if (item) { item.obs = document.getElementById('obsTextarea').value.trim(); save(); renderGroup(obsTarget.gId); }
   closeObs();
 }
 
-document.getElementById('obsOverlay').addEventListener('click', function(e) {
-  if (e.target === this) closeObs();
-});
+document.getElementById('obsOverlay').addEventListener('click', function(e){ if(e.target===this) closeObs(); });
 
-// ── DATE MODAL ───────────────────────────────────────
 function openDateModal() {
-  document.getElementById('terminalName').value = meta.terminal || '';
-  document.getElementById('dateField').value = meta.date || '';
-  document.getElementById('respName').value = meta.resp || '';
-  document.getElementById('turnoField').value = meta.turno || '';
+  document.getElementById('terminalName').value = meta.terminal||'';
+  document.getElementById('dateField').value = meta.date||'';
+  document.getElementById('respName').value = meta.resp||'';
+  document.getElementById('turnoField').value = meta.turno||'';
   document.getElementById('dateOverlay').classList.add('open');
 }
 function closeDateModal() { document.getElementById('dateOverlay').classList.remove('open'); }
@@ -928,45 +579,37 @@ function saveDateModal() {
   meta.date     = document.getElementById('dateField').value;
   meta.resp     = document.getElementById('respName').value.trim();
   meta.turno    = document.getElementById('turnoField').value;
-  save(); updateHeader();
-  closeDateModal();
+  save(); updateHeader(); closeDateModal();
 }
 
-// ── REPORT ──────────────────────────────────────────
 function buildReport() {
-  const d = meta.date ? formatDate(meta.date) : '–';
-  const lines = [];
-  lines.push(`RONDA OPERACIONAL`);
-  if (meta.terminal) lines.push(`Terminal: ${meta.terminal}`);
-  lines.push(`Data: ${d}`);
-  if (meta.turno) lines.push(`Turno: ${meta.turno}`);
-  if (meta.resp)  lines.push(`Responsável: ${meta.resp}`);
-  lines.push('─'.repeat(40));
-
-  let tot=0, ok=0, warn=0, issue=0, pend=0;
-  const issueItems=[], warnItems=[];
-
-  groups.forEach(g => {
-    if (g.items.length === 0) return;
-    lines.push(`\n${g.name.toUpperCase()}`);
-    g.items.forEach(item => {
+  var d = meta.date ? formatDate(meta.date) : '–';
+  var lines = ['RONDA OPERACIONAL'];
+  if (meta.terminal) lines.push('Terminal: '+meta.terminal);
+  lines.push('Data: '+d);
+  if (meta.turno) lines.push('Turno: '+meta.turno);
+  if (meta.resp)  lines.push('Responsável: '+meta.resp);
+  lines.push('─────────────────────────────────────────');
+  var tot=0,ok=0,warn=0,issue=0,pend=0;
+  var issueItems=[],warnItems=[];
+  groups.forEach(function(g) {
+    if (!g.items.length) return;
+    lines.push('\n'+g.name.toUpperCase());
+    g.items.forEach(function(item) {
       tot++;
-      const s = item.status;
-      let sym, lbl;
+      var s=item.status, sym, lbl;
       if (s==='ok')    { sym='✓'; lbl='OK';       ok++; }
-      else if (s==='warn')  { sym='⚡'; lbl='ATENÇÃO';  warn++; warnItems.push(`${g.name} › ${item.name}`); }
-      else if (s==='issue') { sym='✗'; lbl='PROBLEMA'; issue++; issueItems.push(`${g.name} › ${item.name}`); }
+      else if(s==='warn') { sym='⚡'; lbl='ATENÇÃO';  warn++; warnItems.push(g.name+' › '+item.name); }
+      else if(s==='issue'){ sym='✗'; lbl='PROBLEMA'; issue++; issueItems.push(g.name+' › '+item.name); }
       else              { sym='○'; lbl='PENDENTE'; pend++; }
-      lines.push(`  ${sym} [${lbl}] ${item.name}`);
-      if (item.obs) lines.push(`       └ ${item.obs}`);
+      lines.push('  '+sym+' ['+lbl+'] '+item.name);
+      if (item.obs) lines.push('       └ '+item.obs);
     });
   });
-
-  lines.push(`\n${'─'.repeat(40)}`);
-  lines.push(`RESUMO: ${tot} itens | ✓ ${ok} OK | ⚡ ${warn} Atenção | ✗ ${issue} Problema | ○ ${pend} Pendente`);
-  if (issueItems.length) { lines.push(`\nPROBLEMAS:`); issueItems.forEach(i => lines.push(`  • ${i}`)); }
-  if (warnItems.length)  { lines.push(`\nATENÇÃO:`);  warnItems.forEach(i => lines.push(`  • ${i}`)); }
-
+  lines.push('\n─────────────────────────────────────────');
+  lines.push('RESUMO: '+tot+' itens | ✓ '+ok+' OK | ⚡ '+warn+' Atenção | ✗ '+issue+' Problema | ○ '+pend+' Pendente');
+  if (issueItems.length) { lines.push('\nPROBLEMAS:'); issueItems.forEach(function(i){ lines.push('  • '+i); }); }
+  if (warnItems.length)  { lines.push('\nATENÇÃO:');  warnItems.forEach(function(i){ lines.push('  • '+i); }); }
   return lines.join('\n');
 }
 
@@ -975,16 +618,15 @@ function openReport() {
   document.getElementById('reportOverlay').classList.add('open');
 }
 function closeReport() { document.getElementById('reportOverlay').classList.remove('open'); }
-function sendWhatsApp() {
-  const text = document.getElementById('reportText').textContent;
-  const encoded = encodeURIComponent(text);
-  window.open('https://wa.me/?text=' + encoded, '_blank');
-}
-document.getElementById('reportOverlay').addEventListener('click', function(e) {
-  if (e.target === this) closeReport();
-});
 
-// ── CLEAR ────────────────────────────────────────────
+function sendWhatsApp() {
+  var text = buildReport();
+  var url = 'https://wa.me/?text=' + encodeURIComponent(text);
+  window.open(url, '_blank');
+}
+
+document.getElementById('reportOverlay').addEventListener('click', function(e){ if(e.target===this) closeReport(); });
+
 function clearAll() {
   if (!confirm('Limpar toda a ronda e começar do zero?')) return;
   groups = [];
@@ -992,198 +634,196 @@ function clearAll() {
   save(); render(); updateHeader();
 }
 
-// ── RENDER ───────────────────────────────────────────
-const QUICK_ITEMS = {
-  'plataforma': ['WC Masculino','WC Feminino','WC PCD','WC Familiar','Bebedouro','Caixa Eletrônico 24h','Display Álcool em Gel','Lixeiras'],
-  'banheiro': ['WC Masculino','WC Feminino','WC PCD','WC Familiar'],
-  'extintor': ['Verificar carga','Lacre íntegro','Sinalização presente','Acesso desobstruído'],
-  'hidrante': ['Mangueira presente','Esguicho presente','Martelinho presente','Alarme antifurto','Caixa íntegra'],
-  'geral': ['Limpeza','Iluminação','Sinalização','Acesso','Equipamentos'],
-};
-
 function getQuickItems(groupName) {
-  const n = groupName.toLowerCase();
-  if (n.includes('plataforma')) return QUICK_ITEMS['plataforma'];
-  if (n.includes('banheiro') || n.includes('wc')) return QUICK_ITEMS['banheiro'];
-  if (n.includes('extintor')) return QUICK_ITEMS['extintor'];
-  if (n.includes('hidrante')) return QUICK_ITEMS['hidrante'];
-  return QUICK_ITEMS['geral'];
-}
-
-function renderGroup(gId) {
-  const g = groups.find(g => g.id === gId);
-  if (!g) return;
-
-  const existing = document.getElementById('gc_' + gId);
-  const wasCollapsed = existing && existing.classList.contains('collapsed');
-
-  const card = buildGroupCard(g);
-  if (wasCollapsed) card.classList.add('collapsed');
-
-  if (existing) existing.replaceWith(card);
-  else {
-    const main = document.getElementById('main');
-    const addCard = main.querySelector('[data-add]');
-    main.insertBefore(card, addCard);
-  }
-  updateStats();
-  checkEmpty();
+  var n = groupName.toLowerCase();
+  if (n.includes('plataforma')) return QUICK_ITEMS.plataforma;
+  if (n.includes('banheiro')||n.includes('wc')) return QUICK_ITEMS.banheiro;
+  if (n.includes('extintor')) return QUICK_ITEMS.extintor;
+  if (n.includes('hidrante')) return QUICK_ITEMS.hidrante;
+  if (n.includes('pmd')) return QUICK_ITEMS.pmd;
+  return QUICK_ITEMS.geral;
 }
 
 function buildGroupCard(g) {
-  const card = document.createElement('div');
+  var verified = g.items.filter(function(i){ return i.status!==null; }).length;
+  var card = document.createElement('div');
   card.className = 'group-card';
-  card.id = 'gc_' + g.id;
+  card.id = 'gc_'+g.id;
 
-  const verified = g.items.filter(i => i.status !== null).length;
-
-  // header
-  const hdr = document.createElement('div');
+  var hdr = document.createElement('div');
   hdr.className = 'group-header';
-  hdr.innerHTML = `
-    <span class="group-name">${g.name}</span>
-    <span class="group-counter">${verified}/${g.items.length}</span>
-    <span class="group-chevron">▼</span>
-    <button onclick="event.stopPropagation();deleteGroup('${g.id}')" 
-      style="background:none;border:none;color:var(--muted);font-size:16px;cursor:pointer;padding:2px 4px;line-height:1;">×</button>
-  `;
-  hdr.addEventListener('click', () => card.classList.toggle('collapsed'));
+  hdr.innerHTML =
+    '<span class="group-name">'+escHtml(g.name)+'</span>'+
+    '<span class="group-counter" id="gcnt_'+g.id+'">'+verified+'/'+g.items.length+'</span>'+
+    '<span class="group-chevron">▼</span>'+
+    '<button class="del-group-btn" onclick="event.stopPropagation();deleteGroup(\''+g.id+'\')">×</button>';
+  hdr.addEventListener('click', function(){ card.classList.toggle('collapsed'); });
   card.appendChild(hdr);
 
-  // body
-  const body = document.createElement('div');
+  var body = document.createElement('div');
   body.className = 'group-body';
 
-  // items
-  g.items.forEach(item => {
-    const row = document.createElement('div');
-    row.className = 'item-row' + (item.status ? ' s-'+item.status : '');
-    row.id = 'ir_' + item.id;
+  g.items.forEach(function(item) {
+    var row = document.createElement('div');
+    row.className = 'item-row'+(item.status?' s-'+item.status:'');
+    row.id = 'ir_'+item.id;
 
-    const tagHtml = item.status
-      ? `<span class="item-tag tag-${item.status}">${item.status==='ok'?'✓ OK':item.status==='warn'?'⚡ Atenção':'✗ Problema'}</span>`
+    var tagHtml = item.status
+      ? '<span class="item-tag tag-'+item.status+'">'+(item.status==='ok'?'✓ OK':item.status==='warn'?'⚡ Atenção':'✗ Problema')+'</span>'
       : '';
-    const obsHtml = item.obs ? `<div class="item-obs">📝 ${item.obs}</div>` : '';
+    var obsHtml = item.obs ? '<div class="item-obs">📝 '+escHtml(item.obs)+'</div>' : '';
 
-    row.innerHTML = `
-      <div class="item-status-bar"></div>
-      <div class="item-main">
-        <div class="item-name">${item.name}</div>
-        ${tagHtml}
-        ${obsHtml}
-      </div>
-      <div class="item-actions">
-        <button class="act-btn ${item.status==='ok'?'active-ok':''}" 
-          onclick="setStatus('${g.id}','${item.id}','ok')" title="OK">✓</button>
-        <button class="act-btn ${item.status==='warn'?'active-warn':''}" 
-          onclick="setStatus('${g.id}','${item.id}','warn')" title="Atenção">⚡</button>
-        <button class="act-btn ${item.status==='issue'?'active-issue':''}" 
-          onclick="setStatus('${g.id}','${item.id}','issue')" title="Problema">✗</button>
-        <button class="act-btn del" 
-          onclick="deleteItem('${g.id}','${item.id}')" title="Remover">🗑</button>
-      </div>
-    `;
+    row.innerHTML =
+      '<div class="item-status-bar"></div>'+
+      '<div class="item-main">'+
+        '<div class="item-name">'+escHtml(item.name)+'</div>'+
+        tagHtml+obsHtml+
+      '</div>'+
+      '<div class="item-actions">'+
+        '<button class="act-btn'+(item.status==='ok'?' active-ok':'')+'" onclick="setStatus(\''+g.id+'\',\''+item.id+'\',\'ok\')">✓</button>'+
+        '<button class="act-btn'+(item.status==='warn'?' active-warn':'')+'" onclick="setStatus(\''+g.id+'\',\''+item.id+'\',\'warn\')">⚡</button>'+
+        '<button class="act-btn'+(item.status==='issue'?' active-issue':'')+'" onclick="setStatus(\''+g.id+'\',\''+item.id+'\',\'issue\')">✗</button>'+
+        '<button class="act-btn" onclick="openEdit(\''+g.id+'\',\''+item.id+'\')" style="font-size:14px;">✏️</button>'+
+        '<button class="act-btn del" onclick="deleteItem(\''+g.id+'\',\''+item.id+'\')">🗑</button>'+
+      '</div>';
 
-    // tap on item-main to open obs
-    row.querySelector('.item-main').addEventListener('click', () => {
-      if (item.status && item.status !== 'ok') openObs(g.id, item.id);
+    row.querySelector('.item-main').addEventListener('click', function(){
+      if (item.status && item.status!=='ok') openObs(g.id, item.id);
     });
-
     body.appendChild(row);
   });
 
-  // add item area
-  const addArea = document.createElement('div');
+  // add item
+  var usedNames = g.items.map(function(i){ return i.name; });
+  var qItems = getQuickItems(g.name).filter(function(q){ return !usedNames.includes(q); });
+  var addArea = document.createElement('div');
   addArea.className = 'add-item-area';
-
-  const qItems = getQuickItems(g.name);
-  const usedNames = new Set(g.items.map(i => i.name));
-  const available = qItems.filter(q => !usedNames.has(q));
-
-  addArea.innerHTML = `
-    <div class="add-item-row">
-      <input class="add-item-input" id="ii_${g.id}" placeholder="Adicionar item..." 
-        onkeydown="if(event.key==='Enter') addItem('${g.id}')">
-      <button class="add-item-btn" onclick="addItem('${g.id}')">+ Add</button>
-    </div>
-    ${available.length ? `
-    <div class="quick-tags">
-      ${available.map(q => `<span class="qtag" onclick="quickItem('${g.id}','${q}')">${q}</span>`).join('')}
-    </div>` : ''}
-  `;
+  addArea.innerHTML =
+    '<div class="add-item-row">'+
+      '<input class="add-item-input" id="ii_'+g.id+'" placeholder="Adicionar item..." onkeydown="if(event.key===\'Enter\') addItem(\''+g.id+'\')">'+
+      '<button class="add-item-btn" onclick="addItem(\''+g.id+'\')">+ Add</button>'+
+    '</div>'+
+    (qItems.length ? '<div class="quick-tags">'+qItems.map(function(q){
+      return '<span class="qtag" onclick="quickItem(\''+g.id+'\',\''+q+'\')">'+q+'</span>';
+    }).join('')+'</div>' : '');
   body.appendChild(addArea);
-
   card.appendChild(body);
   return card;
 }
 
+function escHtml(str) {
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function renderGroup(gId) {
+  var g = groups.find(function(g){ return g.id===gId; });
+  if (!g) return;
+  var existing = document.getElementById('gc_'+gId);
+  var wasCollapsed = existing && existing.classList.contains('collapsed');
+  var card = buildGroupCard(g);
+  if (wasCollapsed) card.classList.add('collapsed');
+  if (existing) existing.replaceWith(card);
+  else {
+    var addCard = document.querySelector('[data-add]');
+    document.getElementById('main').insertBefore(card, addCard);
+  }
+  checkEmpty();
+}
+
 function render() {
-  const main = document.getElementById('main');
-
-  // remove existing group cards
-  main.querySelectorAll('.group-card:not([data-add])').forEach(c => c.remove());
-
-  // empty state
-  const es = document.getElementById('emptyState');
-  if (es) es.style.display = groups.length === 0 ? '' : 'none';
-
-  // insert group cards before add-group card
-  const addCard = main.querySelector('[data-add]');
-  groups.forEach(g => {
-    const card = buildGroupCard(g);
-    main.insertBefore(card, addCard || null);
+  var main = document.getElementById('main');
+  main.querySelectorAll('.group-card:not([data-add])').forEach(function(c){ c.remove(); });
+  var addCard = main.querySelector('[data-add]');
+  var es = document.getElementById('emptyState');
+  if (es) es.style.display = groups.length===0 ? '' : 'none';
+  groups.forEach(function(g) {
+    main.insertBefore(buildGroupCard(g), addCard);
   });
-
   updateStats();
 }
 
-// mark add-group card
-document.addEventListener('DOMContentLoaded', () => {
-  const cards = document.querySelectorAll('.group-card');
-  cards[cards.length-1].setAttribute('data-add','1');
-});
-
 function checkEmpty() {
-  const es = document.getElementById('emptyState');
-  if (es) es.style.display = groups.length === 0 ? '' : 'none';
+  var es = document.getElementById('emptyState');
+  if (es) es.style.display = groups.length===0 ? '' : 'none';
 }
 
 function updateStats() {
-  let tot=0, ok=0, warn=0, issue=0;
-  groups.forEach(g => g.items.forEach(i => {
+  var tot=0,ok=0,warn=0,issue=0;
+  groups.forEach(function(g){ g.items.forEach(function(i){
     tot++;
-    if (i.status==='ok') ok++;
-    else if (i.status==='warn') warn++;
-    else if (i.status==='issue') issue++;
-  }));
-  const checked = ok+warn+issue;
-  const pct = tot ? Math.round(checked/tot*100) : 0;
-
+    if(i.status==='ok') ok++;
+    else if(i.status==='warn') warn++;
+    else if(i.status==='issue') issue++;
+  });});
+  var checked=ok+warn+issue;
+  var pct = tot ? Math.round(checked/tot*100) : 0;
   document.getElementById('statTotal').textContent = tot;
   document.getElementById('statOk').textContent = ok;
   document.getElementById('statWarn').textContent = warn;
   document.getElementById('statIssue').textContent = issue;
   document.getElementById('progFill').style.width = pct+'%';
-  document.getElementById('progLabel').textContent = `${checked} de ${tot} verificados`;
+  document.getElementById('progLabel').textContent = checked+' de '+tot+' verificados';
   document.getElementById('progPct').textContent = tot ? pct+'%' : '–';
-
-  // update all group counters
-  groups.forEach(g => {
-    const el = document.querySelector(`#gc_${g.id} .group-counter`);
-    if (el) {
-      const v = g.items.filter(i => i.status!==null).length;
-      el.textContent = `${v}/${g.items.length}`;
-    }
+  groups.forEach(function(g){
+    var el = document.getElementById('gcnt_'+g.id);
+    if (el) { var v=g.items.filter(function(i){return i.status!==null;}).length; el.textContent=v+'/'+g.items.length; }
   });
 }
 
-// mark add card on first render
-window.addEventListener('load', () => {
-  const main = document.getElementById('main');
-  const cards = main.querySelectorAll('.group-card');
-  if (cards.length) cards[cards.length-1].setAttribute('data-add','1');
-  init();
-});
+init();
 </script>
+<!-- EDIT ITEM SHEET -->
+<div class="overlay" id="editOverlay">
+  <div class="sheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-title">✏️ Editar Item</div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:8px;">Nome do item</div>
+    <input type="text" id="editNameInput" class="add-item-input" style="width:100%;margin-bottom:12px;" maxlength="100">
+    <div style="font-size:12px;color:var(--muted);margin-bottom:8px;">Observação</div>
+    <textarea class="sheet-textarea" id="editObsInput" placeholder="Observação opcional..."></textarea>
+    <div class="sheet-actions" style="margin-top:12px;">
+      <button class="btn-secondary" onclick="closeEdit()">Cancelar</button>
+      <button class="btn-primary" onclick="saveEdit()">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+var editTarget = null;
+
+function openEdit(gId, iId) {
+  var g = groups.find(function(g){ return g.id===gId; });
+  var item = g && g.items.find(function(i){ return i.id===iId; });
+  if (!item) return;
+  editTarget = { gId:gId, iId:iId };
+  document.getElementById('editNameInput').value = item.name;
+  document.getElementById('editObsInput').value = item.obs || '';
+  document.getElementById('editOverlay').classList.add('open');
+  setTimeout(function(){ document.getElementById('editNameInput').focus(); }, 150);
+}
+
+function closeEdit() {
+  document.getElementById('editOverlay').classList.remove('open');
+  editTarget = null;
+}
+
+function saveEdit() {
+  if (!editTarget) return;
+  var newName = document.getElementById('editNameInput').value.trim();
+  if (!newName) { document.getElementById('editNameInput').focus(); return; }
+  var g = groups.find(function(g){ return g.id===editTarget.gId; });
+  var item = g && g.items.find(function(i){ return i.id===editTarget.iId; });
+  if (item) {
+    item.name = newName;
+    item.obs  = document.getElementById('editObsInput').value.trim();
+    save(); renderGroup(editTarget.gId);
+  }
+  closeEdit();
+}
+
+document.getElementById('editOverlay').addEventListener('click', function(e){ if(e.target===this) closeEdit(); });
+</script>
+
+
 </body>
 </html>
