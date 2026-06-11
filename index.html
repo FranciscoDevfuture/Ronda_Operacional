@@ -621,7 +621,7 @@ function buildReport() {
   lines.push('Data: '+d);
   if (meta.turno) lines.push('Turno: '+meta.turno);
   if (meta.resp)  lines.push('Responsável: '+meta.resp);
-  lines.push('─────────────────────────────────────────');
+
   var tot=0,ok=0,warn=0,issue=0,pend=0;
   var issueItems=[],warnItems=[];
   groups.forEach(function(g){
@@ -638,8 +638,7 @@ function buildReport() {
       if(item.obs) lines.push('       └ '+item.obs);
     });
   });
-  lines.push('\n─────────────────────────────────────────');
-  lines.push('RESUMO: '+tot+' itens | ✓ '+ok+' OK | ⚡ '+warn+' Atenção | ✗ '+issue+' Problema | ○ '+pend+' Pendente');
+  lines.push('\nRESUMO: '+tot+' itens | ✓ '+ok+' OK | ⚡ '+warn+' Atenção | ✗ '+issue+' Problema | ○ '+pend+' Pendente');
   if(issueItems.length){ lines.push('\nPROBLEMAS:'); issueItems.forEach(function(i){ lines.push('  • '+i); }); }
   if(warnItems.length) { lines.push('\nATENÇÃO:');  warnItems.forEach(function(i){ lines.push('  • '+i); }); }
   return lines.join('\n');
